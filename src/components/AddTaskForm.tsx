@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Input } from "@/components/ui/input.tsx"; // Ensure .tsx for Deno
+import { Button } from "@/components/ui/button.tsx"; // Ensure .tsx for Deno
 
 interface AddTaskFormProps {
   onTaskAdd: (text: string) => void;
@@ -15,14 +17,15 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onTaskAdd }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2">
+      <Input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Add a new task"
+        placeholder="Add a new task..."
+        className="flex-1"
       />
-      <button type="submit">Add Task</button>
+      <Button type="submit">Add Task</Button>
     </form>
   );
 };

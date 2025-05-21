@@ -89,15 +89,20 @@ const TasksPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Tasks</h2>
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+    <div className="container mx-auto p-4 max-w-2xl"> {/* Main container with Tailwind classes */}
+      {/* Removed h2 "Tasks" as the main h1 in App.tsx serves as overall title */}
+      {/* Error display can be improved, perhaps with a dedicated Alert component later */}
+      {error && (
+        <p className="bg-destructive/10 text-destructive p-3 rounded-md mb-4 border border-destructive/30">
+          Error: {error}
+        </p>
+      )}
       <AddTaskForm onTaskAdd={handleAddTask} />
       <TaskList
         tasks={tasks}
         onDeleteTask={handleDeleteTask}
         onToggleTask={handleToggleTask}
-        onSplitTask={handleSplitTask} // Pass the new handler
+        onSplitTask={handleSplitTask}
       />
     </div>
   );
@@ -118,10 +123,10 @@ async function handleSplitTaskLogic(taskId: string, setTasks: React.Dispatch<Rea
       const errorData = await response.json().catch(() => ({ error: `Failed to split task: ${response.status}` }));
       throw new Error(errorData.error || `Failed to split task: ${response.status}`);
     }
-    const newSubtasks: Task[] = await response.json();
-    // setTasks(prevTasks => [...prevTasks, ...newSubtasks]); // Append new subtasks
+    // const newSubtasks: Task[] = await response.json(); // Not directly used as we refetch
+    // setTasks(prevTasks => [...prevTasks, ...newSubtasks]);
 
-    // For simplicity and to see changes reflected immediately if subtasks are added at the end of the main list by API:
+    // Re-fetch all tasks to update the list with new subtasks
     const fetchResponse = await fetch('/api/tasks');
     if (!fetchResponse.ok) {
         throw new Error(`Failed to re-fetch tasks: ${fetchResponse.status}`);
