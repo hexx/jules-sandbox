@@ -1,31 +1,28 @@
 {
   "imports": {
-    "hono/": "jsr:@hono/hono@^4.7.10/", // Prefix for Hono modules
-    "react": "https://esm.sh/react@18",
-    "react-dom/client": "https://esm.sh/react-dom@18/client",
-    "@tanstack/router": "https://esm.sh/@tanstack/react-router@beta",
-    "$std/": "jsr:@std/", // Base for Deno Standard Library modules
-    // Specific Hono testing module. No trailing slash if it's a direct module import.
-    // If 'hono/testing' was used to import 'hono/testing/index.ts' or 'hono/testing/mod.ts',
-    // this should point to the module itself, not be a prefix.
-    // Given the original was "hono/testing": ".../testing/index.ts", this should be:
-    "hono/testing": "jsr:@hono/hono@^4.7.10/testing", 
-    "$std/assert/": "jsr:@std/assert@^0.220.0/", // Prefix for Deno Assertions module
-    "ai": "https://esm.sh/ai",
-    "openai": "https://esm.sh/openai",
-    "zod": "https://esm.sh/zod@3",
-    "tailwindcss": "https://esm.sh/tailwindcss@3.4.1",
-    "lucide-react": "https://esm.sh/lucide-react@0.344.0",
-    "tailwindcss-animate": "https://esm.sh/tailwindcss-animate@1.0.7",
-    "autoprefixer": "https://esm.sh/autoprefixer@10.4.17",
-    "clsx": "https://esm.sh/clsx@2.1.0",
-    "tailwind-merge": "https://esm.sh/tailwind-merge@2.2.1",
-    "class-variance-authority": "https://esm.sh/class-variance-authority@0.7.0",
-    "@radix-ui/react-slot": "https://esm.sh/@radix-ui/react-slot@1.0.2",
     "@radix-ui/react-checkbox": "https://esm.sh/@radix-ui/react-checkbox@1.0.4",
     "@radix-ui/react-label": "https://esm.sh/@radix-ui/react-label@2.0.2",
+    "@radix-ui/react-slot": "https://esm.sh/@radix-ui/react-slot@1.0.2",
+    "@tanstack/router": "https://esm.sh/@tanstack/react-router@beta",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@4.4.1",
+    "$std/": "jsr:@std/",
+    "$std/assert/": "jsr:@std/assert@^0.220.0/",
+    "@/components/": "./src/components/",
     "@/lib/utils": "./src/lib/utils.ts",
-    "@/components/": "./src/components/"
+    "ai": "https://esm.sh/ai",
+    "autoprefixer": "https://esm.sh/autoprefixer@10.4.17",
+    "class-variance-authority": "https://esm.sh/class-variance-authority@0.7.0",
+    "clsx": "https://esm.sh/clsx@2.1.0",
+    "hono/": "jsr:@hono/hono@^4.7.10/",
+    "hono/testing": "jsr:@hono/hono@^4.7.10/testing",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0",
+    "openai": "https://esm.sh/openai",
+    "react": "https://esm.sh/react@18",
+    "react-dom/client": "https://esm.sh/react-dom@18/client",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@2.2.1",
+    "tailwindcss": "https://esm.sh/tailwindcss@3.4.1",
+    "tailwindcss-animate": "https://esm.sh/tailwindcss-animate@1.0.7",
+    "zod": "https://esm.sh/zod@3"
   },
   "tasks": {
     "dev": "deno run --allow-read --allow-write --allow-env --allow-net npm:vite",
