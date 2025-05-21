@@ -23,7 +23,7 @@ This is a task management application that allows users to create, manage, and d
 ## Setup and Installation
 
 1.  **Clone the repository** (if applicable, or ensure you have the project files).
-2.  **Dependencies**: No explicit installation step for dependencies like Node.js `package.json`, as Deno manages dependencies via URLs in `deno.jsonc`. Deno will download and cache them automatically when you run the application or tests.
+2.  **Dependencies**: No explicit installation step for dependencies like Node.js `package.json`. Deno manages dependencies via their URLs or specifiers (including those from JSR for Deno-native modules like Hono and the Deno Standard Library, and `esm.sh` for many npm packages) listed in the `deno.jsonc` import map. Deno will download and cache them automatically when you run the application or tests.
 3.  **Environment Variable**: Ensure `OPENAI_API_KEY` is set in your environment.
     *   You can set it in your shell: `export OPENAI_API_KEY='your_actual_api_key_here'`
     *   Alternatively, for a more project-specific setup (though not implemented in the current code), you could use a `.env` file and a library like `deno-dotenv` to load it when the application starts. The current setup directly uses `Deno.env.get("OPENAI_API_KEY")`.
@@ -65,7 +65,7 @@ The following tasks are defined in `deno.jsonc` and can be run using `deno task 
 
 ## Project Structure (Brief Overview)
 
-*   `deno.jsonc`: Deno configuration file, including import maps for managing dependencies (including Tailwind, shadcn/ui related packages) and task definitions.
+*   `deno.jsonc`: Deno configuration file, including an import map for managing dependencies from various sources (e.g., JSR for Hono and Deno Standard Library, `esm.sh` for React and Tailwind-related packages) and task definitions.
 *   `tailwind.config.ts`: Configuration for Tailwind CSS.
 *   `postcss.config.js`: Configuration for PostCSS, used by Tailwind CSS.
 *   `components.json`: Configuration file for shadcn/ui.

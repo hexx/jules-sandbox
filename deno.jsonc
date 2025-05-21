@@ -1,12 +1,16 @@
 {
   "imports": {
-    "hono/": "https://deno.land/x/hono/mod.ts",
+    "hono/": "jsr:@hono/hono@^4.7.10/", // Prefix for Hono modules
     "react": "https://esm.sh/react@18",
     "react-dom/client": "https://esm.sh/react-dom@18/client",
     "@tanstack/router": "https://esm.sh/@tanstack/react-router@beta",
-    "$std/": "https://deno.land/std@0.220.0/",
-    "hono/testing": "https://deno.land/x/hono@v4.0.0-rc.2/testing/index.ts",
-    "$std/assert/": "https://deno.land/std@0.220.0/assert/",
+    "$std/": "jsr:@std/", // Base for Deno Standard Library modules
+    // Specific Hono testing module. No trailing slash if it's a direct module import.
+    // If 'hono/testing' was used to import 'hono/testing/index.ts' or 'hono/testing/mod.ts',
+    // this should point to the module itself, not be a prefix.
+    // Given the original was "hono/testing": ".../testing/index.ts", this should be:
+    "hono/testing": "jsr:@hono/hono@^4.7.10/testing", 
+    "$std/assert/": "jsr:@std/assert@^0.220.0/", // Prefix for Deno Assertions module
     "ai": "https://esm.sh/ai",
     "openai": "https://esm.sh/openai",
     "zod": "https://esm.sh/zod@3",
